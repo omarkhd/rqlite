@@ -16,7 +16,7 @@ jobs:
       - image: circleci/golang:1.12
     steps:
         - checkout
-        - run: git checkout 4.x
+        - run: git branch
         - run: go get -t -d -v ./...
         - run:
             command: go test -race -timeout 120s -v ./...
