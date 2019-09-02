@@ -6,8 +6,9 @@ jobs:
       - image: circleci/golang:1.12
     steps:
         - checkout
+        - run: git checkout 4.x
         - run: go vet .
-        - run: go get -t -d -v ./...
+        - run: go get -f -t -d -v ./...
         - run: go test -timeout 60s -v ./...
 
   race:
@@ -16,8 +17,9 @@ jobs:
       - image: circleci/golang:1.12
     steps:
         - checkout
+        - run: git checkout 4.x
         - run: git branch
-        - run: go get -t -d -v ./...
+        - run: go get -f -t -d -v ./...
         - run:
             command: go test -race -timeout 120s -v ./...
             environment:
@@ -29,8 +31,9 @@ jobs:
       - image: circleci/golang:1.12
     steps:
         - checkout
+        - run: git checkout 4.x
         - run: sudo apt-get install python-requests
-        - run: go get -t -d -v ./...
+        - run: go get -f -t -d -v ./...
         - run: (cd cmd/rqlited && go build)
         - run:
             command: system_test/full_system_test.py
