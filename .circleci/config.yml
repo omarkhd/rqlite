@@ -6,7 +6,7 @@ jobs:
     steps:
         - run: mkdir -p $CIRCLE_WORKING_DIRECTORY
         - run: cd $CIRCLE_WORKING_DIRECTORY
-        - run: git clone $CIRCLE_REPOSITORY_URL
+        - run: git clone https://github.com/rqlite/rqlite.git
         - run: go get -u -t ...
         - run: git checkout $CIRCLE_BRANCH
         - run: go vet .
