@@ -6,7 +6,7 @@ jobs:
       - image: circleci/golang:1.13
     steps:
         - run: go get -u -t github.com/rqlite/rqlite/...
-        - run: go checkout $CIRCLE_BRANCH
+        - run: git checkout $CIRCLE_BRANCH
         - run: go vet .
         - run: git branch
         - run: go test -timeout 60s -v ./...
