@@ -8,6 +8,7 @@ jobs:
         - run: mkdir -p $CIRCLE_WORKING_DIRECTORY
         - run: cd $CIRCLE_WORKING_DIRECTORY
         - run: git clone https://github.com/rqlite/rqlite.git
+        - run: cd rqlite
         - run: go get -u -t ./...
         - run: git checkout $CIRCLE_BRANCH
         - run: go vet .
