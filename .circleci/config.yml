@@ -1,17 +1,15 @@
 version: 2
 jobs:
   test:
-    working_directory: ~/rqlite/src/github.com/rqlite/rqlite
     docker:
       - image: circleci/golang:1.13
     steps:
-        - run: go get -u -t github.com/rqlite/rqlite/...
-        - run: pwd
+        - run: mkdir -p $CIRCLE_WORKING_DIRECTORY
         - run: cd $CIRCLE_WORKING_DIRECTORY
-        - run: pwd
+        - run: git clone $CIRCLE_REPOSITORY_URL
+        - run: go get -u -t ...
         - run: git checkout $CIRCLE_BRANCH
         - run: go vet .
-        - run: git branch
         - run: go test -timeout 60s -v ./...
 
   race:
