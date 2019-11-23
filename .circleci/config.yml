@@ -9,6 +9,7 @@ jobs:
         - run: git checkout 4.x
         - run: go vet .
         - run: go get -t -d -v ./...
+        - run: git branch
         - run: go test -timeout 60s -v ./...
 
   race:
